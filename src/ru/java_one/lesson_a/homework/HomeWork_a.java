@@ -13,19 +13,15 @@ public class HomeWork_a {
 //    если да - вернуть true, иначе - false
     public static boolean numberXY(int a, int b){
         int sum = a + b;
-        if(sum >= 10 & sum <= 20){
-            return true;
-        }else return false;
+        return sum <= 20 && sum >=10;
     }
 
 //    Написать метод которому в качестве параметра переда-
 //    ётся целое число, метод должен проверить положетельное
 //    ли число передали, или отрицательное. Замечание: ноль
 //    считается положительным числом. Результат вывести в консоль
-    public static void numberX(int a){
-        if(a >= 0){
-            System.out.println("Вы ввели положительное число " + a);
-        }else System.out.println("Вы ввели отрицательное число " + a);
+    public static boolean numberX(int a){
+        return a >= 0;
     }
 
 //    Написать метод которому в качестве параметра передается
