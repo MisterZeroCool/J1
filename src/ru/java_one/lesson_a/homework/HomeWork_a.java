@@ -5,8 +5,8 @@ public class HomeWork_a {
     //щающий результат с плавающей точкой, где a,b,c,d - целочис-
     //ленные параметры этого метода.
     public static float number(int a, int b, int c, int d){
-        float value = a*(b+(c/d));
-        return value;
+        return a * (b + (c * 1.0f / d));
+
 }
     //Написать метод, принимающий на вход два числа, проверя-
 //    ющий что их сумма лежит в пределах  от 10 до 20( включительно),
