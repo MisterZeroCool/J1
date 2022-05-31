@@ -4,8 +4,8 @@ package ru.java_one.lesson_d.homework_d;
 //Внутри класса «Сотрудник» написать методы, которые возвращают значение каждого поля;
 //Вывести при помощи методов из пункта 3 ФИО и должность.
 public class Employee {
-    private int count = 1;
-    private int id;
+    private static int count = 0;
+    public int id;
     private String first_name;
     private String position;
     private int salary;
@@ -18,7 +18,7 @@ public class Employee {
         this.first_name = first_name;
         this.age = age;
         this.salary = salary;
-        id = count++;
+        id = ++count;
     }
 
     public Employee(String first_name, String position, int salary, int age) {
@@ -26,6 +26,7 @@ public class Employee {
         this.position = position;
         this.salary = salary;
         this.age = age;
+        id = ++count;
     }
 
     public String getFirst_name() {
@@ -66,5 +67,19 @@ public class Employee {
         }return salary;
     }
 
+    public static int getCount() {
+        return count;
+    }
 
+    public static void setCount(int count) {
+        Employee.count = count;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
