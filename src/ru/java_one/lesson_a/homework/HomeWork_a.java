@@ -5,27 +5,23 @@ public class HomeWork_a {
     //щающий результат с плавающей точкой, где a,b,c,d - целочис-
     //ленные параметры этого метода.
     public static float number(int a, int b, int c, int d){
-        float value = a*(b+(c/d));
-        return value;
+        return a * (b + (c * 1.0f / d));
+
 }
     //Написать метод, принимающий на вход два числа, проверя-
 //    ющий что их сумма лежит в пределах  от 10 до 20( включительно),
 //    если да - вернуть true, иначе - false
     public static boolean numberXY(int a, int b){
         int sum = a + b;
-        if(sum >= 10 & sum <= 20){
-            return true;
-        }else return false;
+        return sum <= 20 && sum >=10;
     }
 
 //    Написать метод которому в качестве параметра переда-
 //    ётся целое число, метод должен проверить положетельное
 //    ли число передали, или отрицательное. Замечание: ноль
 //    считается положительным числом. Результат вывести в консоль
-    public static void numberX(int a){
-        if(a >= 0){
-            System.out.println("Вы ввели положительное число " + a);
-        }else System.out.println("Вы ввели отрицательное число " + a);
+    public static boolean numberX(int a){
+        return a >= 0;
     }
 
 //    Написать метод которому в качестве параметра передается
