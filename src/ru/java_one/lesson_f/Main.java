@@ -39,9 +39,11 @@ public class Main {
         try {
             FileInputStream fis = new FileInputStream("file.txt");
             int b;
+            //прочитать все байты из входящего потока и пока эти байты не будут равны -1
             while ((b = fis.read()) != -1)
+            //так как выведутся числа, нам надо превратить из в символы char
                 System.out.print((char) b);
-
+            //закрыть поток
             fis.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -83,6 +85,7 @@ public class Main {
         StringBuilder sb = new StringBuilder("Example");
         startTime = System.nanoTime();
         for (int i = 0; i < 100000; i++) {
+
             sb.append(i);
         }
         deltaTime = (System.nanoTime() - startTime) * 0.000000001f;

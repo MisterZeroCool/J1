@@ -1,0 +1,55 @@
+1.Создать 2 текстовых файла, примерно по 50-100 символов в каждом(особого значения не имеет);
+2.Написать программу, «склеивающую» эти файлы, то есть вначале идет текст из первого файла, потом текст из второго.
+3.* Написать программу, которая проверяет присутствует ли указанное пользователем слово в файле (работаем только с латиницей).
+4.** Написать метод, проверяющий, есть ли указанное слово в папке
+
+Порядок выволения домашнего задания.
+Для начала нам нужн прочиать прочитать файл который мы хотим записыть, читаем символ и записываем его в файл.
+
+Разбор домашнего задания
+Создаем два файла с первоначальным текстом. Далее создаем class Text,  создаем поля:
+File f1;
+File f2;
+Далее создаем метод glueTugether() которому передаем наши файлы File f1, File f2.
+public void glueTogether(File f1, File f2){
+Так как конструкторы FileWrite() и FileReader() выбрасывают  исключения вида throws FileNotFoundException и throw IOException, их необходимо перехватить и обработать.
+Используем try с ресурсами
+        try (FileWriter writer = new FileWriter(f1,true); слово true указывает на то что в файл можно записывать данные без утери предыдущих
+             FileReader reader = new FileReader(f2)){
+            int c; для записи полученных байтов
+	и пока полученный символ у нас не равняется концу строки, продолжаем чтение. присваеваем переменной 'c' каждый полученный символ
+            while((c = reader.read()) != -1){
+		далее записываем каждый полученный символ в файл
+                writer.write(c);
+            }
+        } catch(FileNotFoundException e) {
+            e.printStackTrace();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+Ищем похожее слово в файле
+Данному методу передается искомое слово и файл, в котором мы это слово будем искать
+Опять используем try с ресурсами
+public void checkWord(String checkWord,File f1) {
+        try(FileReader reader = new FileReader(f1);
+            Scanner scannerFile = new Scanner(f1)) {
+            while(scannerFile.hasNext()){
+                String searchWord = scannerFile.next();
+                System.out.println("Search word:"+checkWord);
+					метод equalsIgnoreCase(checkWord) Сравнивает две строки .Сравнение основано на значении каждого символа в строках в Юникоде.
+					Последовательность символов, представленная этим объектом String, лексикографически срав-
+					нивается с последовательностью символов, представленной строкой аргумента. если равны возвращает 0
+                if(searchWord.equalsIgnoreCase(checkWord)){
+                    System.out.println("Found: " + checkWord);
+                }else {
+                    System.out.println("no");
+                }
+            }
+        } catch(FileNotFoundException e) {
+            e.printStackTrace();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
